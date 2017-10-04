@@ -1,13 +1,20 @@
 package com.efficom.eii.sudoku.server.controllers;
 
-import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
+import com.efficom.eii.sudoku.server.models.Grid;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RestController;
 
-@Controller
+@RestController
 public class GridController {
 
-    @RequestMapping("/grid")
-    public String get() {
-        return "hello world";
+    @GetMapping("/grid")
+    public Grid get() {
+        return new Grid();
+    }
+
+    @PostMapping("/grid")
+    public String post() {
+        return "Post /grid";
     }
 }
