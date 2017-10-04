@@ -1,8 +1,11 @@
 package com.efficom.eii.sudoku.server.models;
 
+import java.util.HashSet;
+import java.util.Set;
+
 public class Section {
 
-    private String name;
+    private Position position;
     private int[][] boxes;
 
     public Section() {
@@ -10,7 +13,17 @@ public class Section {
     }
 
     public boolean isValid() {
-        boolean result = true;
+        boolean result;
+
+        Set<Integer> set = new HashSet<>();
+        for (int[] line : boxes) {
+            for (int value : line) {
+                set.add(value);
+            }
+        }
+
+        result = set.size() == 9;
+
         return result;
     }
 
@@ -30,12 +43,12 @@ public class Section {
         return true;
     }
 
-    public String getName() {
-        return name;
+    public Position getPosition() {
+        return position;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setPosition(Position position) {
+        this.position = position;
     }
 
     public int[][] getBoxes() {
