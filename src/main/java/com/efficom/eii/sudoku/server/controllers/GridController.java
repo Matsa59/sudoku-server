@@ -10,6 +10,7 @@ public class GridController {
 
     @GetMapping("/grid")
     public Grid get() {
+        Grid grid = new Grid();
         return new Grid();
     }
 

@@ -10,8 +10,8 @@ public class Grid {
 
     public Grid() {
         sections = new Section[9];
-        for(Section section : sections) {
-            section = new Section();
+        for(int i = 0; i < 9; i++) {
+            sections[i] = new Section();
         }
     }
 
