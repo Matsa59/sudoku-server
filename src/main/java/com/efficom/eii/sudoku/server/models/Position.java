@@ -1,7 +1,6 @@
 package com.efficom.eii.sudoku.server.models;
 
 enum Position {
-
     TOP_LEFT,
     TOP,
     TOP_RIGHT,
@@ -11,5 +10,4 @@ enum Position {
     BOTTOM_LEFT,
     BOTTOM,
     BOTTOM_RIGHT
-
 }

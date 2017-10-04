@@ -18,7 +18,7 @@ public class Section {
         Set<Integer> set = new HashSet<>();
         for (int[] line : boxes) {
             for (int value : line) {
-                set.add(value);
+                if(value != 0) set.add(value);
             }
         }
 

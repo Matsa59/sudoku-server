@@ -1,10 +1,15 @@
 package com.efficom.eii.sudoku.server.models;
 
+import com.fasterxml.jackson.annotation.JsonGetter;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonSetter;
+
+
 public class Grid {
 
-    private Section[] sections;
-    private Row[] rows;
-    private Column[] columns;
+    @JsonIgnore private Section[] sections;
+    @JsonIgnore private Row[] rows;
+    @JsonIgnore private Column[] columns;
 
     public Section[] getSections() {
         return sections;
@@ -28,12 +33,12 @@ public class Grid {
     }
 
     public void set(int x, int y, int value) {
-        // TODO :
-        // sections[x / 3].setBox();
-        rows[x].setBox(y, value);
+        sections[x / 3 + y / 3].setBox(x%3, y%3, value);
+        rows[y].setBox(x, value);
         columns[x].setBox(y, value);
     }
 
+    @JsonIgnore
     public boolean isValid() {
         boolean result = true;
 
@@ -48,5 +53,29 @@ public class Grid {
         }
 
         return result;
+    }
+
+
+    @JsonGetter("sudoku")
+    public String getSudoku() {
+        StringBuilder sb = new StringBuilder();
+
+        for(Row row : rows) {
+            sb.append(row.toString());
+        }
+
+        return sb.toString();
+    }
+
+
+    @JsonSetter("sudoku")
+    public void setSudoku(String sudoku) {
+        if(sudoku.length() != 81)
+            throw new IllegalArgumentException("String should have a length of 81");
+
+        for(int i=0; i<sudoku.length(); i++) {
+            int value = Character.getNumericValue(sudoku.charAt(i));
+            this.set(i%9, i/9, value);
+        }
     }
 }
