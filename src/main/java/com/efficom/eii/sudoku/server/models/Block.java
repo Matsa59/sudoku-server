@@ -26,20 +26,11 @@ public class Block {
         return result;
     }
 
-    public boolean setCell(int positionX, int positionY, Cell cell) {
-        if (positionX < 0
-            || positionX > 2
-            || positionY < 0
-            || positionY > 2
-            || cell.getValue() < 1
-            || cell.getValue() > 9
-        ) {
-            return false;
-        }
+    public void setCell(int positionX, int positionY, Cell cell) {
+        if (positionX < 0|| positionX > 2 || positionY < 0 || positionY > 2)
+            throw new IllegalArgumentException();
 
         cells[positionX][positionY] = cell;
-
-        return true;
     }
 
     public Cell[][] getCells() {
