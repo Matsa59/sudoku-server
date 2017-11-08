@@ -16,8 +16,14 @@ public class Column {
         if(y < 0 && y >= COLUMN_SIZE)
             throw new IllegalArgumentException();
 
-
         cells[y] = cell;
+    }
+
+    public Cell getCell(int y) {
+        if(y < 0 && y >= COLUMN_SIZE)
+            throw new IllegalArgumentException();
+
+        return cells[y];
     }
 
     public boolean isValid() {
