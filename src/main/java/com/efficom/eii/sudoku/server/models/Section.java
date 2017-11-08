@@ -6,19 +6,19 @@ import java.util.Set;
 public class Section {
 
     private Position position;
-    private int[][] boxes;
+    private Cell[][] cells;
 
     public Section() {
-        boxes = new int[3][3];
+        cells = new Cell[3][3];
     }
 
     public boolean isValid() {
         boolean result;
 
         Set<Integer> set = new HashSet<>();
-        for (int[] line : boxes) {
-            for (int value : line) {
-                if(value != 0) set.add(value);
+        for (Cell[] cell_array : cells) {
+            for (Cell cell : cell_array) {
+                if(cell.getValue() != 0) set.add(cell.getValue());
             }
         }
 
@@ -27,7 +27,7 @@ public class Section {
         return result;
     }
 
-    public boolean setBox(int positionX, int positionY, int value) {
+    public boolean SetCell(int positionX, int positionY, int value) {
         if (positionX < 0
             || positionX > 2
             || positionY < 0
@@ -38,7 +38,7 @@ public class Section {
             return false;
         }
 
-        boxes[positionX][positionY] = value;
+        cells[positionX][positionY].setValue(value);
 
         return true;
     }
@@ -51,11 +51,11 @@ public class Section {
         this.position = position;
     }
 
-    public int[][] getBoxes() {
-        return boxes;
+    public Cell[][] getCells() {
+        return cells;
     }
 
-    public void setBoxes(int[][] boxes) {
-        this.boxes = boxes;
+    public void setCells(Cell[][] cells) {
+        this.cells = cells;
     }
 }
