@@ -6,25 +6,25 @@ import java.util.Set;
 public class Column {
 
     private static int COLUMN_SIZE = 9;
-    private int[] column;
+    private Cell[] cells;
 
     public Column() {
-        column = new int[COLUMN_SIZE];
+        cells = new Cell[COLUMN_SIZE];
     }
 
     public void setBox(int y, int value) {
         if(y < 0 && y >= COLUMN_SIZE)
             throw new IllegalArgumentException();
 
-        column[y] = value;
+        cells[y].setValue(value);
     }
 
     public boolean isValid() {
         boolean result;
 
         Set<Integer> set = new HashSet<>();
-        for (int value : column) {
-            if(value != 0) set.add(value);
+        for (Cell cell : cells) {
+            if(cell.getValue() != 0) set.add(cell.getValue());
         }
 
         result = set.size() == 9;

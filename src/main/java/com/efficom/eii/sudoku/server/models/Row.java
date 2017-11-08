@@ -6,25 +6,26 @@ import java.util.Set;
 public class Row {
 
     private static int ROW_SIZE = 9;
-    private int[] line;
+    private Cell[] cells;
 
     public Row() {
-        line = new int[ROW_SIZE];
+        cells = new Cell[ROW_SIZE];
     }
 
     public void setBox(int x, int value) {
         if(x < 0 && x >= ROW_SIZE)
             throw new IllegalArgumentException();
 
-        line[x] = value;
+        cells[x].setValue(value);
     }
 
     public boolean isValid() {
         boolean result;
 
         Set<Integer> set = new HashSet<>();
-        for (int value : line) {
-            if(value != 0) set.add(value);
+        for (Cell cell : cells) {
+            if(cell.getValue() != 0)
+                set.add(cell.getValue());
         }
 
         result = set.size() == 9;
@@ -35,8 +36,8 @@ public class Row {
     public String toString() {
         StringBuilder sb = new StringBuilder();
 
-        for(int i : line) {
-            sb.append(i);
+        for(Cell cell : cells) {
+            sb.append(cell.getValue());
         }
 
         return sb.toString();
