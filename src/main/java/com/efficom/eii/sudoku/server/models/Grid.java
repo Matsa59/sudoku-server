@@ -76,4 +76,9 @@ public class Grid {
             this.setCell(i%9, i/9, value);
         }
     }
+
+    @Override
+    public String toString() {
+        return getSudoku();
+    }
 }
