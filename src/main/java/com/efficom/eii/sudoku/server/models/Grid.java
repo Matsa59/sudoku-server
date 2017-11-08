@@ -7,16 +7,16 @@ import com.fasterxml.jackson.annotation.JsonSetter;
 
 public class Grid {
 
-    @JsonIgnore private Section[] sections;
+    @JsonIgnore private Block[] blocks;
     @JsonIgnore private Row[] rows;
     @JsonIgnore private Column[] columns;
 
     public Grid() {
-        sections = new Section[9];
+        blocks = new Block[9];
         rows = new Row[9];
         columns = new Column[9];
         for(int i = 0; i < 9; i++) {
-            sections[i] = new Section();
+            blocks[i] = new Block();
             rows[i] = new Row();
             columns[i] = new Column();
         }
@@ -24,7 +24,7 @@ public class Grid {
 
     public void set(int x, int y, int value) {
         Cell cell = new Cell(value);
-        sections[x / 3 + y / 3].setCell(x%3, y%3, cell);
+        blocks[x / 3 + y / 3].setCell(x%3, y%3, cell);
         rows[y].setCell(x, cell);
         columns[x].setCell(y, cell);
     }
@@ -33,8 +33,8 @@ public class Grid {
     public boolean isValid() {
         boolean result = true;
 
-        for (Section section: sections) {
-            result = result && section.isValid();
+        for (Block block : blocks) {
+            result = result && block.isValid();
         }
         for (Row row: rows) {
             result = result && row.isValid();

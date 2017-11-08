@@ -3,11 +3,11 @@ package com.efficom.eii.sudoku.server.models;
 import java.util.HashSet;
 import java.util.Set;
 
-public class Section {
+public class Block {
 
     private Cell[][] cells;
 
-    public Section() {
+    public Block() {
         cells = new Cell[3][3];
     }
 
