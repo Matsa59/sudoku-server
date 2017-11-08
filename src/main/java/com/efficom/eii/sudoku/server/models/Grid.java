@@ -23,9 +23,10 @@ public class Grid {
     }
 
     public void set(int x, int y, int value) {
-        sections[x / 3 + y / 3].setCell(x%3, y%3, value);
-        rows[y].setBox(x, value);
-        columns[x].setBox(y, value);
+        Cell cell = new Cell(value);
+        sections[x / 3 + y / 3].setCell(x%3, y%3, cell);
+        rows[y].setCell(x, cell);
+        columns[x].setCell(y, cell);
     }
 
     @JsonIgnore

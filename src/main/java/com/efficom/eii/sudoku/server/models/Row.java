@@ -12,11 +12,11 @@ public class Row {
         cells = new Cell[ROW_SIZE];
     }
 
-    public void setBox(int x, int value) {
+    public void setCell(int x, Cell cell) {
         if(x < 0 && x >= ROW_SIZE)
             throw new IllegalArgumentException();
 
-        cells[x] = new Cell(value);
+        cells[x] = cell;
     }
 
     public boolean isValid() {

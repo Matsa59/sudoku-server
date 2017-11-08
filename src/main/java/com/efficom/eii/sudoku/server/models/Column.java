@@ -12,12 +12,12 @@ public class Column {
         cells = new Cell[COLUMN_SIZE];
     }
 
-    public void setBox(int y, int value) {
+    public void setCell(int y, Cell cell) {
         if(y < 0 && y >= COLUMN_SIZE)
             throw new IllegalArgumentException();
 
 
-        cells[y] = new Cell(value);
+        cells[y] = cell;
     }
 
     public boolean isValid() {

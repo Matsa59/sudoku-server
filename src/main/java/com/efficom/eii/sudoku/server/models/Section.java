@@ -26,18 +26,18 @@ public class Section {
         return result;
     }
 
-    public boolean setCell(int positionX, int positionY, int value) {
+    public boolean setCell(int positionX, int positionY, Cell cell) {
         if (positionX < 0
             || positionX > 2
             || positionY < 0
             || positionY > 2
-            || value < 1
-            || value > 9
+            || cell.getValue() < 1
+            || cell.getValue() > 9
         ) {
             return false;
         }
 
-        cells[positionX][positionY] = new Cell(value);
+        cells[positionX][positionY] = cell;
 
         return true;
     }
