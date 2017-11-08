@@ -11,16 +11,6 @@ public class Grid {
     @JsonIgnore private Row[] rows;
     @JsonIgnore private Column[] columns;
 
-    public Section[] getSections() {
-        return sections;
-    }
-    public Row[] getRows() {
-        return rows;
-    }
-    public Column[] getColumns() {
-        return columns;
-    }
-
     public Grid() {
         sections = new Section[9];
         rows = new Row[9];
@@ -33,7 +23,7 @@ public class Grid {
     }
 
     public void set(int x, int y, int value) {
-        sections[x / 3 + y / 3].setBox(x%3, y%3, value);
+        sections[x / 3 + y / 3].setCell(x%3, y%3, value);
         rows[y].setBox(x, value);
         columns[x].setBox(y, value);
     }

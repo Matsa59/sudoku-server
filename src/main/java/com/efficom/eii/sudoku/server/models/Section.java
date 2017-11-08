@@ -5,7 +5,6 @@ import java.util.Set;
 
 public class Section {
 
-    private Position position;
     private Cell[][] cells;
 
     public Section() {
@@ -27,7 +26,7 @@ public class Section {
         return result;
     }
 
-    public boolean SetCell(int positionX, int positionY, int value) {
+    public boolean setCell(int positionX, int positionY, int value) {
         if (positionX < 0
             || positionX > 2
             || positionY < 0
@@ -38,17 +37,9 @@ public class Section {
             return false;
         }
 
-        cells[positionX][positionY].setValue(value);
+        cells[positionX][positionY] = new Cell(value);
 
         return true;
-    }
-
-    public Position getPosition() {
-        return position;
-    }
-
-    public void setPosition(Position position) {
-        this.position = position;
     }
 
     public Cell[][] getCells() {

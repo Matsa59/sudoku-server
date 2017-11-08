@@ -16,7 +16,8 @@ public class Column {
         if(y < 0 && y >= COLUMN_SIZE)
             throw new IllegalArgumentException();
 
-        cells[y].setValue(value);
+
+        cells[y] = new Cell(value);
     }
 
     public boolean isValid() {

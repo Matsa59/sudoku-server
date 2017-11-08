@@ -16,7 +16,7 @@ public class Row {
         if(x < 0 && x >= ROW_SIZE)
             throw new IllegalArgumentException();
 
-        cells[x].setValue(value);
+        cells[x] = new Cell(value);
     }
 
     public boolean isValid() {
