@@ -37,7 +37,7 @@ public class Row {
         StringBuilder sb = new StringBuilder();
 
         for(Cell cell : cells) {
-            sb.append(cell.getValue());
+            sb.append(cell != null ? cell.getValue() : 0);
         }
 
         return sb.toString();
