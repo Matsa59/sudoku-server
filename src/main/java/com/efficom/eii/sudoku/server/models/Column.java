@@ -38,4 +38,14 @@ public class Column {
 
         return result;
     }
+
+    public boolean haveValue(int value) {
+        for(int i = 0; i < COLUMN_SIZE; i++) {
+            if(cells[i] != null && cells[i].getValue() == value) {
+                return true;
+            }
+        }
+
+        return false;
+    }
 }

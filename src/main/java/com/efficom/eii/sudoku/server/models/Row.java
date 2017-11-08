@@ -19,6 +19,13 @@ public class Row {
         cells[x] = cell;
     }
 
+    public Cell getCell(int x) {
+        if(x < 0 && x >= ROW_SIZE)
+            throw new IllegalArgumentException();
+
+        return cells[x];
+    }
+
     public boolean isValid() {
         boolean result;
 
@@ -31,6 +38,16 @@ public class Row {
         result = set.size() == 9;
 
         return result;
+    }
+
+    public boolean haveValue(int value) {
+        for(int i = 0; i < ROW_SIZE; i++) {
+            if(cells[i] != null && cells[i].getValue() == value) {
+                return true;
+            }
+        }
+
+        return false;
     }
 
     public String toString() {

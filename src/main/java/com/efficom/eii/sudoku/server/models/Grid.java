@@ -22,18 +22,30 @@ public class Grid {
         }
     }
 
-    public void setCell(int x, int y, int value) {
+    public boolean setCell(int x, int y, int value){
+        for(int i = 0; i < 9; i++) {
+            if(
+                rows[y].getCell(i) != null
+                && rows[y].getCell(i).getValue() == value
+                || columns[x].getCell(i) != null
+                && columns[x].getCell(i).getValue() == value
+            ) {
+                return false;
+            }
+        }
+
         Cell cell = new Cell(value);
         blocks[x / 3 + y / 3].setCell(x%3, y%3, cell);
         rows[y].setCell(x, cell);
         columns[x].setCell(y, cell);
+
+        return true;
     }
 
     public void setValue(int x, int y, int value) {
         Cell cell = columns[x].getCell(y);
         cell.setValue(value);
     }
-
 
 
     @JsonIgnore
@@ -59,7 +71,7 @@ public class Grid {
         StringBuilder sb = new StringBuilder();
 
         for(Row row : rows) {
-            sb.append(row.toString());
+            sb.append(row.toString() + "\n");
         }
 
         return sb.toString();
@@ -75,6 +87,18 @@ public class Grid {
             int value = Character.getNumericValue(sudoku.charAt(i));
             this.setCell(i%9, i/9, value);
         }
+    }
+
+    public Block getBlocks(int x) {
+        return blocks[x];
+    }
+
+    public Row getRows(int x) {
+        return rows[x];
+    }
+
+    public Column getColumns(int x) {
+        return columns[x];
     }
 
     @Override

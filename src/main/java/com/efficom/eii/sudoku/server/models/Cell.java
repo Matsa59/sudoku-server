@@ -14,4 +14,11 @@ public class Cell {
     public void setValue(int value) {
         this.value = value;
     }
+
+    @Override
+    public String toString() {
+        return "Cell{" +
+                "value=" + value +
+                '}';
+    }
 }
